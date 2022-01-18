@@ -3,8 +3,12 @@ package com.codewithmichal;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
+        String[][] board = grid();
+        grid2(board);
+    }
+
+    private static String[][] grid() {
         String[][] grid = new String[3][3];
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter cells: ");
@@ -16,9 +20,12 @@ public class Main {
                 grid[i][j] = String.valueOf(cells.charAt(k++));
             }
         }
+        return grid;
+    }
 
+    private static void grid2(String[][] board) {
         System.out.println("---------");
-        for (String[] row : grid) {
+        for (String[] row : board) {
             System.out.print("| ");
             for (String mark : row) {
                 System.out.print(mark + " ");
@@ -27,6 +34,5 @@ public class Main {
             System.out.print("\n");
         }
         System.out.println("---------");
-
     }
 }
