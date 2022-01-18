@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Board {
+package com.codewithmichal;
+
+public class Board {
+    
 }
