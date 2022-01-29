@@ -1,5 +1,5 @@
 package com.codewithmichal;
 
-public class Board {
+public class testy {
 
 }
