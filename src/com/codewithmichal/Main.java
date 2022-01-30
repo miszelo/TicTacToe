@@ -9,18 +9,20 @@ public class Main {
         game(board);
 
         System.out.println(result(board));
+
     }
 
     public static void game(String[][] board) {
         printingBoard(board);
         Scanner scanner = new Scanner(System.in);
         String player = "X";
-        int game = 0;
-        while (game<9) {
+        int first;
+        int second;
+        while (true) {
             System.out.print("Enter the coordinates: ");
             try {
-                int first = scanner.nextInt();
-                int second = scanner.nextInt();
+                first = Integer.parseInt(scanner.next());
+                second = Integer.parseInt(scanner.next());
                 if ((first > 3 || first < 1) || (second > 3 || second < 1)) {
                     System.out.println("Coordinates should be from 1 to 3!");
                     continue;
@@ -34,16 +36,15 @@ public class Main {
                 continue;
             }
             printingBoard(board);
-            if ((!isWinner("X", board)) || (!isWinner("O", board))) {
+            if ((isWinner(player, board))) {
+               break;
+            } else if ((!isWinner(player, board))){
                 if (player.equals("O")) {
                     player = "X";
                 } else {
                     player = "O";
                 }
-            } else {
-                break;
             }
-            game++;
         }
     }
 
