@@ -19,6 +19,9 @@ public class Main {
         int first;
         int second;
         while (true) {
+            if (isDraw(board)) {
+                break;
+            }
             System.out.print("Enter the coordinates: ");
             try {
                 first = Integer.parseInt(scanner.next());
@@ -89,15 +92,15 @@ public class Main {
     }
 
     // Check for the winner
-    public static boolean isWinner(String player, String[][] gameGrid) {
-        for (int i = 0; i < gameGrid.length; i++) {
+    public static boolean isWinner(String player, String[][] board) {
+        for (int i = 0; i < board.length; i++) {
             int row = 0;
             int column = 0;
-            for (int j = 0; j < gameGrid[i].length; j++) {
-                if (gameGrid[i][j].equals(player)) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j].equals(player)) {
                     row++; // check row
                 }
-                if (gameGrid[j][i].equals(player)) {
+                if (board[j][i].equals(player)) {
                     column++; // check column
                 }
             }
@@ -105,9 +108,19 @@ public class Main {
                 return true;
             }
         }
-        if (gameGrid[0][0].equals(player) && gameGrid[1][1].equals(player) && gameGrid[2][2].equals(player)) {
-            return true;
-        } else return gameGrid[0][2].equals(player) && gameGrid[1][1].equals(player) && gameGrid[2][0].equals(player);
+        return board[0][0].equals(player) && board[1][1].equals(player) && board[2][2].equals(player);//else return gameGrid[0][2].equals(player) && gameGrid[1][1].equals(player) && gameGrid[2][0].equals(player);
+    }
+
+    public static boolean isDraw(String[][] board) {
+        int count = 0;
+        for (String[] strings : board) {
+            for (String string : strings) {
+                if (string.equals("X") || string.equals("O")) {
+                    count++;
+                }
+            }
+        }
+        return count == 9;
     }
 
 }
